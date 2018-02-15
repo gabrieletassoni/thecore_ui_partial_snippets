@@ -1,6 +1,6 @@
 <script>
-    function buildDTPicker(id, label, initialValue){
-      var html = '<div class="input-group date" default-date="'+initialValue+'">';
+  function buildDTPicker(id, label, initialValue, ro){
+    var html = '<div class="input-group date" default-date="'+initialValue+'">';
       html += '<label class="input-group-addon">'+label+'</label>';
       html += '<input class="form-control" type="text" name="'+id+'" readonly/>';
       html += '<label class="input-group-addon"><i class="fa fa-fw fa-calendar"></i></label>';
@@ -9,7 +9,7 @@
       jqueryObj.datetimepicker({
         locale: "<%=I18n.locale%>",
         defaultDate: initialValue,
-        ignoreReadonly: true,
+        ignoreReadonly: !ro,
         allowInputToggle: true,
         sideBySide: true,
         icons: {
@@ -25,5 +25,5 @@
         },
       });
       return jqueryObj;
-    }
+  }
 </script>
