@@ -1,12 +1,12 @@
 <script>
-  function buildDTPicker(id, label, initialValue, ro){
+  function buildDTPicker(id, label, initialValue, ro, date_only){
     var html = '<div class="input-group date" default-date="'+initialValue+'">';
       html += '<label class="input-group-addon">'+label+'</label>';
       html += '<input class="form-control" type="text" name="'+id+'" readonly/>';
       html += '<label class="input-group-addon"><i class="fa fa-fw fa-calendar"></i></label>';
       html += '</div>';
       var jqueryObj = $(html);
-      jqueryObj.datetimepicker({
+      var dtParams = {
         locale: "<%=I18n.locale%>",
         defaultDate: initialValue,
         ignoreReadonly: !ro,
@@ -22,8 +22,11 @@
           today: 'fa fa-calendar-check-o',
           clear: 'fa fa-trash',
           close: 'fa fa-times'
-        },
-      });
+        }
+      }
+      if(date_only)
+        dtParams.format = "L";
+      jqueryObj.datetimepicker(dtParams);
       return jqueryObj;
   }
 </script>
