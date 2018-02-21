@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["gabriele.tassoni@gmail.com"]
   s.homepage    = "https://www.taris.it"
   s.summary     = "Rails partials useful in Thecore Atomic Components."
-  s.description = "Rails partials useful in Thecore Atomic Components."
+  s.description = "Rails partials useful in Thecore Atomic Components and main."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]

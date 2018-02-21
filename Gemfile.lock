@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    thecore_ui_partial_snippets (1.1.6)
+    thecore_ui_partial_snippets (1.1.8)
       thecore (~> 1.1)
 
 GEM

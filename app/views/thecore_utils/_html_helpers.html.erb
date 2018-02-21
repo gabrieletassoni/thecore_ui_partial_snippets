@@ -2,7 +2,7 @@
   function buildDTPicker(id, label, initialValue, ro, date_only){
     var html = '<div class="input-group date" default-date="'+initialValue+'">';
       html += '<label class="input-group-addon">'+label+'</label>';
-      html += '<input class="form-control" type="text" name="'+id+'" readonly/>';
+      html += '<input class="form-control" type="text" readonly/>';
       html += '<label class="input-group-addon"><i class="fa fa-fw fa-calendar"></i></label>';
       html += '</div>';
       var jqueryObj = $(html);
@@ -26,7 +26,9 @@
       }
       if(date_only)
         dtParams.format = "L";
-      jqueryObj.datetimepicker(dtParams);
+      jqueryObj.datetimepicker(dtParams).on('dp.change', function (e){
+        returnedData[id.replace(/-/g, '_')] = e.date.format();
+      });
       return jqueryObj;
   }
 </script>
