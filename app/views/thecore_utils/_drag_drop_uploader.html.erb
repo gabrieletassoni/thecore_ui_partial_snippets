@@ -1,0 +1,90 @@
+<style>
+    /* layout.css Style */
+    .upload-drop-zone {
+        height: 200px;
+        border-width: 2px;
+        margin-bottom: 20px;
+    }
+
+    /* skin.css Style*/
+    .upload-drop-zone {
+        color: #ccc;
+        border-style: dashed;
+        border-color: #ccc;
+        line-height: 200px;
+        text-align: center
+    }
+
+    .upload-drop-zone.drop {
+        color: #222;
+        border-color: #222;
+    }
+</style>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong><%=I18n.t :file_upload%></strong>
+        <small><%=I18n.t :file_upload_subtitle, extension: Settings.ns(:xls_item_codes_importer).extension%></small>
+        <div class="pull-right" id="<%=target%>-upload-drop-zone-feedback">
+
+        </div>
+    </div>
+    <div class="panel-body">
+
+        <!-- Drop Zone -->
+        <div class="upload-drop-zone" id="<%=target%>">
+            <%=I18n.t :please_drag_and_drop_here%>
+        </div>
+
+        <div id="upload-status">
+        </div>
+    </div>
+</div>
+
+<script>
+    var fileupload = {
+        init: function () {
+            $('#<%=target%>').on("drop", this.ondrop);
+            $('#<%=target%>').on("dragover", this.ondragover);
+            $('#<%=target%>').on("dragleave", this.ondragleave);
+        },
+
+        ondrop: function (e) {
+            // console.log(e)
+            e.preventDefault();
+            $('#<%=target%>').removeClass('drop');
+            $("#<%=target%>-upload-drop-zone-feedback").html("<i class='fa fa-spinner fa-spin '></i>");
+
+            // console.log(e.dataTransfer.files);
+            var fd = new FormData();
+            $.each(e.originalEvent.dataTransfer.files, function (i, file) {
+                fd.append('files[]', file);
+            });
+
+            $.ajax({
+                url: '<%=url%>',
+                data: fd,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function () {
+
+                    $("#<%=target%>-upload-drop-zone-feedback").html($("<span><%=I18n.t :upload_ok%></span>").delay(3000).fadeOut(400));
+                }
+            });
+            // startUpload(e.dataTransfer.files)
+        },
+
+        ondragover: function () {
+            $('#<%=target%>').addClass('drop');
+            return false;
+        },
+
+        ondragleave: function () {
+            $('#<%=target%>').removeClass('drop');
+            return false;
+        }
+
+    };
+    fileupload.init();
+</script>

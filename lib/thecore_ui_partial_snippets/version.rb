@@ -1,3 +1,3 @@
 module ThecoreUiPartialSnippets
-  VERSION = '1.1.11'.freeze
+  VERSION = '1.1.15'.freeze
 end
