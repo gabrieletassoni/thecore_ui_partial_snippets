@@ -49,6 +49,10 @@
             $('#<%=target%>').on("dragleave", this.ondragleave);
         },
 
+        beforeSuccess: function(){
+            console.log("beforeSuccess");
+        },
+
         ondrop: function (e) {
             // console.log(e)
             e.preventDefault();
@@ -68,7 +72,7 @@
                 contentType: false,
                 type: 'POST',
                 success: function () {
-
+                    fileupload.beforeSuccess();
                     $("#<%=target%>-upload-drop-zone-feedback").html($("<span><%=I18n.t :upload_ok%></span>").delay(3000).fadeOut(400));
                 }
             });
