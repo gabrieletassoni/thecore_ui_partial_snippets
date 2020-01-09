@@ -24,7 +24,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <strong><%=I18n.t :file_upload%></strong>
-        <small><%=I18n.t :file_upload_subtitle, extension: Settings.ns(:xls_item_codes_importer).extension%></small>
+        <small><%=I18n.t :file_upload_subtitle, var: (var rescue "")%></small>
         <div class="pull-right" id="<%=target%>-upload-drop-zone-feedback">
 
         </div>

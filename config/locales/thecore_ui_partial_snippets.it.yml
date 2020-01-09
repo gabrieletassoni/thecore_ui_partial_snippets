@@ -1,3 +1,5 @@
 it:
   upload_not_ok: Ultimo caricamento fallito
   upload_ok: File correttamente salvato
+  notes: ""
+  notes_subtitle: ""
