@@ -73,7 +73,10 @@
                 type: 'POST',
                 success: function () {
                     fileupload.beforeSuccess();
-                    $("#<%=target%>-upload-drop-zone-feedback").html($("<span><%=I18n.t :upload_ok%></span>").delay(3000).fadeOut(400));
+                    $("#<%=target%>-upload-drop-zone-feedback").html($('<i class="fa fa-check-square-o" aria-hidden="true"></i>').delay(3000).fadeOut(400));
+                },
+                error: function () {
+                    $("#<%=target%>-upload-drop-zone-feedback").html($('<i class="fa fa-exclamation-circle" aria-hidden="true"></i>').delay(3000).fadeOut(400));
                 }
             });
             // startUpload(e.dataTransfer.files)
