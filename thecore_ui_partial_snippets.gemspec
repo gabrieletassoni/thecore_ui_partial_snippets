@@ -16,5 +16,5 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  s.add_dependency "thecore", "~> 1.1"
+  s.add_dependency "thecore_ui_rails_admin", "~> 2.0"
 end
